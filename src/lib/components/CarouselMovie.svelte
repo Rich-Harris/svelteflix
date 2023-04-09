@@ -6,11 +6,15 @@
 </script>
 
 <Carousel {items} let:item>
-	<div class="item">
-		<img src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} alt={item.title} />
-		<div class="info">
-			<h3>{item.title}</h3>
-			<p>{item.overview}</p>
-		</div>
+	<img src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} alt={item.title} />
+	<div class="info">
+		<!-- <h3>{item.title}</h3> -->
 	</div>
 </Carousel>
+
+<style>
+	img {
+		height: 100%;
+		width: auto;
+	}
+</style>
