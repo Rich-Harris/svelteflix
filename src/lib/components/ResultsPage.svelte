@@ -44,15 +44,10 @@
 		padding_bottom = Math.floor((items.length - b) / num_columns) * item_height;
 	}
 
-	onMount(() => {
-		handle_resize();
-		handle_scroll();
-	});
+	onMount(handle_resize);
 </script>
 
 <svelte:window on:resize={handle_resize} />
-
-<p>rendering {a} - {b}</p>
 
 <div class="viewport" bind:this={viewport} on:scroll={handle_scroll}>
 	<div
