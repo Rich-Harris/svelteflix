@@ -1,7 +1,10 @@
-<script>
+<script lang="ts">
 	import ResultsPage from '$lib/components/ResultsPage.svelte';
 
-	let items = Array(80).fill('');
+	let items: number[] = [];
+	for (let i = 0; i < 80; i += 1) {
+		items.push(i);
+	}
 </script>
 
 <div class="container">
@@ -10,7 +13,11 @@
 	<ResultsPage
 		{items}
 		on:end={() => {
-			items = [...items, Array(20).fill('')];
+			for (let i = 0; i < 20; i += 1) {
+				items.push(items.length);
+			}
+
+			items = items;
 		}}
 	/>
 </div>
