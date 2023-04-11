@@ -26,7 +26,7 @@
 	.container {
 		display: flex;
 		flex-direction: column;
-		max-width: 40em;
+		max-width: 80em;
 		height: 100%;
 		padding: 0 1rem;
 		margin: 0 auto;

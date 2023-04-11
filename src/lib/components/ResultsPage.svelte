@@ -76,7 +76,7 @@
 	}
 
 	.results {
-		--columns: 4;
+		--columns: 2;
 		display: grid;
 		grid-template-rows: 2em repeat(auto, 1fr);
 		grid-template-columns: repeat(var(--columns), 1fr);
@@ -92,5 +92,29 @@
 		background: #aaa;
 		aspect-ratio: 2 / 3;
 		color: black;
+	}
+
+	@media (min-width: 30rem) {
+		.results {
+			--columns: 3;
+		}
+	}
+
+	@media (min-width: 40rem) {
+		.results {
+			--columns: 4;
+		}
+	}
+
+	@media (min-width: 50rem) {
+		.results {
+			--columns: 5;
+		}
+	}
+
+	@media (min-width: 60rem) {
+		.results {
+			--columns: 6;
+		}
 	}
 </style>
