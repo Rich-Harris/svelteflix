@@ -1,5 +1,5 @@
 <script>
-	import CarouselMovie from '$lib/components/CarouselMovie.svelte';
+	import Carousel from '$lib/components/Carousel.svelte';
 	import Featured from '$lib/components/Featured.svelte';
 
 	export let data;
@@ -15,10 +15,10 @@
 
 <section>
 	<h2>Trending movies</h2>
-	<CarouselMovie items={data.movies.slice(1)} />
+	<Carousel items={data.movies.slice(1)} type="movies" />
 </section>
 
 <section>
 	<h2>Trending TV</h2>
-	<CarouselMovie items={data.tv} />
+	<Carousel items={data.tv} type="tv" />
 </section>
