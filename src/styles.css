@@ -14,13 +14,16 @@
 
 body {
 	margin: 0;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
 }
 
 h1, h2, h3, h4, h5, h6 {
 	font-weight: 400;
 	font-family: Bahnschrift, 'DIN Alternate', 'Franklin Gothic Medium', 'Nimbus Sans Narrow', sans-serif-condensed, sans-serif;
 	color: white;
-	margin: 0 0 1em 0;
+	margin: 0 0 0.5em 0;
 	line-height: 1.1;
 }
 

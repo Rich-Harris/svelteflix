@@ -1,4 +1,5 @@
 <script>
+	import { page } from '$app/stores';
 	import '../styles.css';
 </script>
 
@@ -18,7 +19,7 @@
 	</div>
 </nav>
 
-<main>
+<main class:infinite={$page.data.infinite}>
 	<slot />
 </main>
 
@@ -36,7 +37,14 @@
 	nav {
 		display: grid;
 		grid-template-columns: 1fr 1fr 1fr;
+		width: 100%;
 		align-items: center;
+	}
+
+	main.infinite {
+		height: 0;
+		flex: 1;
+		overflow: hidden;
 	}
 
 	.links {

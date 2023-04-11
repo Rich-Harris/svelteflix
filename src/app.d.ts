@@ -6,7 +6,9 @@ declare global {
 		interface Locals {
 			user: import('@supabase/supabase-js').User | null;
 		}
-		// interface PageData {}
+		interface PageData {
+			infinite?: boolean;
+		}
 		// interface Platform {}
 	}
 }
