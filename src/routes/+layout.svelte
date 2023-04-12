@@ -1,5 +1,6 @@
 <script>
-	import { page } from '$app/stores';
+	import { page, navigating } from '$app/stores';
+	import NavigatingIndicator from '$lib/components/NavigatingIndicator.svelte';
 	import '../styles.css';
 </script>
 
@@ -26,6 +27,10 @@
 <footer>
 	<p>Data provided by <a href="https://www.themoviedb.org/">TMDb</a></p>
 </footer>
+
+{#if $navigating}
+	<NavigatingIndicator />
+{/if}
 
 <style>
 	nav,
