@@ -18,7 +18,7 @@
 		/>
 	{/if}
 
-	<dl class="mini-grid">
+	<dl class="data">
 		<dt>Released</dt>
 		<dd>{data.movie.release_date}</dd>
 
@@ -26,13 +26,13 @@
 		<dd>{data.movie.runtime} minutes</dd>
 
 		<dt>Budget</dt>
-		<dd>{data.movie.budget}</dd>
+		<dd>${Math.round(data.movie.budget / 1e6)}M</dd>
 
-		<dt>Box office</dt>
-		<dd>{data.movie.revenue}</dd>
+		<dt>Revenue</dt>
+		<dd>${Math.round(data.movie.revenue / 1e6)}M</dd>
 
 		<dt>Genre</dt>
-		<dd>{data.movie.genres?.map((g) => g.name).join(', ')}</dd>
+		<dd class="genres">{data.movie.genres?.map((g) => g.name).join(', ')}</dd>
 	</dl>
 </div>
 
@@ -45,7 +45,6 @@
 		display: grid;
 		max-width: var(--column);
 		margin: 2em auto;
-		grid-template-columns: 1fr 1fr;
 		gap: 2em;
 	}
 
@@ -54,9 +53,8 @@
 		width: 100%;
 	}
 
-	.mini-grid {
+	.data {
 		display: grid;
-		height: 0;
 		grid-template-columns: max-content 1fr;
 		gap: 1em;
 	}
@@ -70,9 +68,32 @@
 		text-transform: uppercase;
 		font-size: 0.8rem;
 		top: 0.2rem;
+		opacity: 0.8;
 	}
 
 	dd {
 		margin: 0;
+	}
+
+	.genres {
+		grid-column: 2/5;
+	}
+
+	@media (min-width: 45em) {
+		.data {
+			display: grid;
+			grid-template-columns: max-content 1fr max-content 1fr;
+			gap: 1em;
+		}
+	}
+
+	@media (min-width: 60em) {
+		.grid {
+			grid-template-columns: 1fr 1fr;
+		}
+
+		.data {
+			height: 0;
+		}
 	}
 </style>
