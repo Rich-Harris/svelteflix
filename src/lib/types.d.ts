@@ -32,6 +32,12 @@ export interface MovieDetails {
 	popularity: number;
 	poster_path: string;
 	production_countries: ProductionCountry[];
+	recommendations: {
+		page: number;
+		results: MovieListResult[];
+		total_pages: number;
+		total_results: number;
+	};
 	release_date: string;
 	revenue: number;
 	runtime: number;

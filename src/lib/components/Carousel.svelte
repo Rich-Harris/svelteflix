@@ -2,11 +2,15 @@
 	import type { MovieListResult } from '$lib/types';
 
 	export let title: string;
-	export let href: string;
+	export let href: string | undefined = undefined;
 	export let movies: MovieListResult[];
 </script>
 
-<h2>{title} <a {href}>see all</a></h2>
+<h2>
+	{title}
+	{#if href}<a {href}>see all</a>{/if}
+</h2>
+
 <div class="carousel">
 	{#each movies as movie}
 		<a href="/movies/{movie.id}">

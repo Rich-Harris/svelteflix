@@ -3,7 +3,7 @@ import type { MovieDetails } from '$lib/types.js';
 
 export async function load({ params, fetch }) {
 	const movie = (await api.get(fetch, `/movie/${params.id}`, {
-		append_to_response: 'images,videos'
+		append_to_response: 'images,videos,recommendations'
 	})) as MovieDetails;
 
 	const trailer = movie.videos.results.find((video) => {
