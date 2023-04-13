@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { afterNavigate } from '$app/navigation';
 	import type { MovieListResult } from '$lib/types';
 	import { createEventDispatcher, onMount } from 'svelte';
 
@@ -46,6 +47,10 @@
 	}
 
 	onMount(handle_resize);
+
+	afterNavigate(() => {
+		viewport.scrollTo(0, 0);
+	});
 </script>
 
 <svelte:window on:resize={handle_resize} />
@@ -90,6 +95,7 @@
 
 	img {
 		width: 100%;
+		aspect-ratio: 2 / 3;
 		height: auto;
 	}
 

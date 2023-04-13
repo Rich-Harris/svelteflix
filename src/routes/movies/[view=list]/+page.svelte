@@ -1,18 +1,13 @@
 <script>
-	import { afterNavigate } from '$app/navigation';
 	import * as api from '$lib/api';
 	import ResultsPage from '$lib/components/ResultsPage.svelte';
 
 	export let data;
 
 	let appending = false;
-
-	afterNavigate(() => {
-		// TODO reset scroll
-	});
 </script>
 
-<div class="container">
+<div class="column flex">
 	<h1>{data.title}</h1>
 
 	<ResultsPage
@@ -35,14 +30,3 @@
 		}}
 	/>
 </div>
-
-<style>
-	.container {
-		display: flex;
-		flex-direction: column;
-		max-width: 60rem;
-		margin: 0 auto;
-		height: 100%;
-		padding: 0 1rem;
-	}
-</style>
