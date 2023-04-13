@@ -8,7 +8,7 @@ export async function load({ fetch }) {
 		api.get(fetch, 'movie/upcoming') as Promise<MovieList>
 	]);
 
-	const featured = (await api.get(fetch, `/movie/${trending.results[11].id}`, {
+	const featured = (await api.get(fetch, `/movie/${trending.results[0].id}`, {
 		append_to_response: 'images,videos,recommendations'
 	})) as MovieDetails;
 
