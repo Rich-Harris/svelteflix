@@ -24,7 +24,7 @@
 	.carousel {
 		--padding: max(var(--side), calc(var(--side) + (100vw - var(--column)) / 2));
 		display: flex;
-		height: 20rem;
+		height: clamp(10rem, 25vw, 20rem);
 		overflow-x: auto;
 		overflow-y: hidden;
 		white-space: nowrap;
@@ -55,4 +55,10 @@
 	img {
 		width: 100%;
 	}
+
+	/* @media (min-width: 40rem) {
+		.carousel {
+			height: 15rem;
+		}
+	} */
 </style>
