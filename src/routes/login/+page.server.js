@@ -13,7 +13,10 @@ export function load({ request, url }) {
 
 	const redirect_to = referer?.startsWith(url.origin) ? encodeURIComponent(referer) : null;
 
-	return { redirect_to };
+	return {
+		redirect_to,
+		title: 'Log in'
+	};
 }
 
 export const actions = {

@@ -2,12 +2,19 @@
 	import { enhance } from '$app/forms';
 	import { page, navigating } from '$app/stores';
 	import NavigatingIndicator from '$lib/components/NavigatingIndicator.svelte';
+	import * as api from '$lib/api';
 	import logo from '$lib/images/logo.svg';
 	import tmdb from '$lib/images/tmdb.svg';
 	import '../styles.css';
 
 	export let data;
 </script>
+
+<svelte:head>
+	<link rel="preconnect" href={api.base} />
+	<title>{$page.data.title ?? 'SvelteFlix'}</title>
+	<meta name="description" content="Discover today's top movies" />
+</svelte:head>
 
 <nav>
 	<a class="logo" href="/"><img class="logo" alt="SvelteFlix" src={logo} /></a>

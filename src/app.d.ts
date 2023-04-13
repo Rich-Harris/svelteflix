@@ -8,6 +8,7 @@ declare global {
 		}
 		interface PageData {
 			infinite?: boolean;
+			title: string;
 		}
 		// interface Platform {}
 	}

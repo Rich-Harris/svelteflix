@@ -9,6 +9,7 @@ export async function load({ data, fetch }) {
 	)) as MovieDetails[];
 
 	return {
-		movies
+		movies,
+		title: 'Watchlist'
 	};
 }

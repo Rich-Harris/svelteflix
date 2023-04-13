@@ -1,9 +1,8 @@
 import { browser } from '$app/environment';
 import { error } from '@sveltejs/kit';
-import type { Image } from './types';
 
-const base = 'https://api.movies.tastejs.com';
-const media_base = 'https://image.tmdb.org/t/p';
+export const base = 'https://api.movies.tastejs.com';
+export const media_base = 'https://image.tmdb.org/t/p';
 
 const cache = new Map();
 

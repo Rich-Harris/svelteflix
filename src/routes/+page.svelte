@@ -9,6 +9,10 @@
 	$: logo = images.logos.find((image) => image.iso_639_1 === 'en');
 </script>
 
+<svelte:head>
+	<title>SvelteFlix</title>
+</svelte:head>
+
 <div class="column">
 	<h1>Today's top movies</h1>
 

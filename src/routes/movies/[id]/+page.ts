@@ -17,6 +17,7 @@ export async function load({ data, params, fetch }) {
 	return {
 		in_watchlist: data.in_watchlist,
 		movie,
-		trailer
+		trailer,
+		title: movie.title
 	};
 }
