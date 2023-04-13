@@ -32,11 +32,11 @@
 	}
 
 	.stroke {
-		background: url($lib/icons/star-outline.svg);
+		background: url($lib/images/star-outline.svg);
 	}
 
 	.fill {
-		background: url($lib/icons/star.svg);
+		background: url($lib/images/star.svg);
 		clip-path: inset(0 calc(100% - (var(--rating) * 10%)) 0 0);
 	}
 </style>

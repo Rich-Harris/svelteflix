@@ -2,11 +2,9 @@
 	import Featured from '$lib/components/Featured.svelte';
 
 	export let data;
-
-	console.log(data);
 </script>
 
-<Featured item={data.movie} title={data.movie.title} backdrop={data.movie.images.backdrops[0]} />
+<Featured movie={data.movie} backdrop={data.movie.images.backdrops[0]} />
 
 <section>
 	<div class="grid" class:has-trailer={!!data.trailer}>

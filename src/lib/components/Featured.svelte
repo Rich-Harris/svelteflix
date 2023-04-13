@@ -1,25 +1,24 @@
 <script lang="ts">
-	import type { Image, MovieResult } from 'moviedb-promise';
 	import Stars from './Stars.svelte';
+	import type { MovieDetails, Image, MovieListResult } from '$lib/types';
 
-	export let item: MovieResult;
-	export let title: string;
+	export let movie: MovieDetails | MovieListResult;
 	export let backdrop: Image;
 </script>
 
 <div class="featured">
 	<div class="backdrop">
 		<img
-			src="https://image.tmdb.org/t/p/w1280{backdrop?.file_path}"
-			style="aspect-ratio: {backdrop?.aspect_ratio}"
-			alt={title}
+			src="https://image.tmdb.org/t/p/w1280{backdrop.file_path}"
+			style="aspect-ratio: {backdrop.aspect_ratio}"
+			alt={movie.title}
 		/>
 	</div>
 
 	<div class="info">
-		<h1>{title}</h1>
-		<Stars vote_average={item.vote_average} vote_count={item.vote_count} />
-		<p>{item?.overview}</p>
+		<h1>{movie.title}</h1>
+		<Stars vote_average={movie.vote_average} vote_count={movie.vote_count} />
+		<p>{movie.overview}</p>
 	</div>
 </div>
 

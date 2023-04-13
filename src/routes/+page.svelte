@@ -6,11 +6,7 @@
 </script>
 
 <a href="/movies/{data.featured.movie.id}">
-	<Featured
-		item={data.featured.movie}
-		backdrop={data.featured.backdrop}
-		title={data.featured.movie.title}
-	/>
+	<Featured movie={data.featured.movie} backdrop={data.featured.backdrop} />
 </a>
 
 <section>

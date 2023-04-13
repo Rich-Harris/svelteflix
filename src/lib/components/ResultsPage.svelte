@@ -1,8 +1,8 @@
 <script lang="ts">
-	import type { MovieResult } from 'moviedb-promise';
+	import type { MovieListResult } from '$lib/types';
 	import { createEventDispatcher, onMount } from 'svelte';
 
-	export let items: MovieResult[];
+	export let movies: MovieListResult[];
 	export let next: string | null;
 
 	const dispatch = createEventDispatcher();
@@ -13,9 +13,9 @@
 	let item_height: number;
 	let num_columns: number;
 
-	// render items.slice(a, b);
+	// render movies.slice(a, b);
 	let a = 0;
-	let b = items.length;
+	let b = movies.length;
 	let padding_top = 0;
 	let padding_bottom = 0;
 
@@ -42,7 +42,7 @@
 		b = Math.ceil((scrollTop + clientHeight) / item_height) * num_columns;
 
 		padding_top = Math.floor(a / num_columns) * item_height;
-		padding_bottom = Math.floor((items.length - b) / num_columns) * item_height;
+		padding_bottom = Math.floor((movies.length - b) / num_columns) * item_height;
 	}
 
 	onMount(handle_resize);
@@ -57,14 +57,16 @@
 		style:padding-top="{padding_top}px"
 		style:padding-bottom="{padding_bottom}px"
 	>
-		{#each items.slice(a, b) as item}
+		{#each movies.slice(a, b) as item}
 			<div class="item">
 				<img alt={item.title} src="https://image.tmdb.org/t/p/w500{item.poster_path}" />
 			</div>
 		{/each}
 	</div>
 
-	<a href={next}>next page</a>
+	{#if next}
+		<a href={next}>next page</a>
+	{/if}
 </div>
 
 <style>

@@ -20,6 +20,11 @@ body {
 	flex-direction: column;
 }
 
+::selection {
+	background: var(--accent);
+	color: black;
+}
+
 h1, h2, h3, h4, h5, h6 {
 	font-weight: 400;
 	font-family: Bahnschrift, 'DIN Alternate', 'Franklin Gothic Medium', 'Nimbus Sans Narrow', sans-serif-condensed, sans-serif;
@@ -30,13 +35,20 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
 	font-size: 3.2rem;
+	margin-top: 1em;
 }
 
 a {
 	color: inherit;
 }
 
-section h2 {
-	margin-left: var(--side);
-	margin-right: var(--side);
+.column {
+	padding: 0 var(--side);
+	max-width: 80rem;
+}
+
+.flex {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
 }

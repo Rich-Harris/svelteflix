@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type { MovieResult } from 'moviedb-promise';
+	import type { MovieListResult } from '$lib/types';
 
-	export let items: MovieResult[];
+	export let items: MovieListResult[];
 </script>
 
 <div class="carousel">

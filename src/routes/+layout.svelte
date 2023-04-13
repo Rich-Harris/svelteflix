@@ -2,8 +2,8 @@
 	import { enhance } from '$app/forms';
 	import { page, navigating } from '$app/stores';
 	import NavigatingIndicator from '$lib/components/NavigatingIndicator.svelte';
-	import logo from '$lib/logo.svg';
-	import tmdb from '$lib/tmdb.svg';
+	import logo from '$lib/images/logo.svg';
+	import tmdb from '$lib/images/tmdb.svg';
 	import '../styles.css';
 </script>
 
