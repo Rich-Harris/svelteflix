@@ -14,6 +14,13 @@
 	<link rel="preconnect" href={api.base} />
 	<title>{$page.data.title ?? 'SvelteFlix'}</title>
 	<meta name="description" content="Discover today's top movies" />
+
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta property="twitter:domain" content="frontend-masters-svelteflix.vercel.app" />
+	<meta property="twitter:url" content="https://frontend-masters-svelteflix.vercel.app/" />
+	<meta name="twitter:title" content="SvelteFlix" />
+	<meta name="twitter:description" content="Discover today's top movies" />
+	<meta name="twitter:image" content="https://frontend-masters-svelteflix.vercel.app/og.png" />
 </svelte:head>
 
 <nav>
