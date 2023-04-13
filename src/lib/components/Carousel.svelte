@@ -1,13 +1,16 @@
 <script lang="ts">
 	import type { MovieListResult } from '$lib/types';
 
-	export let items: MovieListResult[];
+	export let title: string;
+	export let href: string;
+	export let movies: MovieListResult[];
 </script>
 
+<h2>{title} <a {href}>see all</a></h2>
 <div class="carousel">
-	{#each items as item}
-		<a href="/movies/{item.id}">
-			<img src="https://image.tmdb.org/t/p/w500{item.poster_path}" alt={item.title} />
+	{#each movies as movie}
+		<a href="/movies/{movie.id}">
+			<img src="https://image.tmdb.org/t/p/w500{movie.poster_path}" alt={movie.title} />
 		</a>
 	{/each}
 </div>
@@ -24,6 +27,17 @@
 		scroll-padding-left: var(--side);
 		padding: 0 var(--side);
 		gap: 1rem;
+	}
+
+	h2 {
+		font-size: 2.4rem;
+		padding: 0 var(--side);
+		margin-top: 4rem;
+	}
+
+	h2 a {
+		color: var(--accent);
+		font-size: 1.6rem;
 	}
 
 	a {

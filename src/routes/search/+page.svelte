@@ -9,10 +9,14 @@
 	<h1>Search</h1>
 
 	<form>
-		<input name="query" value={data.query} autocomplete="off" />
+		<input name="query" value={data.query} autocomplete="off" spellcheck="false" />
 	</form>
 
-	<ResultsPage movies={data.movies} next={null} />
+	{#if data.query}
+		{#key data.query}
+			<ResultsPage movies={data.movies} next={null} />
+		{/key}
+	{/if}
 </div>
 
 <style>

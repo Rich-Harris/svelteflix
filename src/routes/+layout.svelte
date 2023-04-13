@@ -46,6 +46,7 @@
 		align-items: center;
 		justify-content: space-between;
 		color: var(--accent);
+		max-width: 80rem;
 	}
 
 	a {

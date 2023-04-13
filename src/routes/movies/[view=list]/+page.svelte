@@ -13,17 +13,17 @@
 </script>
 
 <div class="container">
-	<h1>Trending movies</h1>
+	<h1>{data.title}</h1>
 
 	<ResultsPage
 		movies={data.movies}
-		next={data.next_page ? `/movies/trending?page=${data.next_page}` : null}
+		next={data.next_page ? `/movies/${data.view}?page=${data.next_page}` : null}
 		on:end={async () => {
 			if (!data.next_page) return;
 			if (appending) return;
 
 			try {
-				const next = await api.get(fetch, 'trending/movie/day', {
+				const next = await api.get(fetch, data.endpoint, {
 					page: String(data.next_page)
 				});
 
