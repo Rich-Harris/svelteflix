@@ -48,10 +48,11 @@
 
 	a {
 		scroll-snap-align: start;
+		height: 100%;
+		aspect-ratio: 2 / 3;
 	}
 
 	img {
-		height: 100%;
-		aspect-ratio: 2 / 3;
+		width: 100%;
 	}
 </style>

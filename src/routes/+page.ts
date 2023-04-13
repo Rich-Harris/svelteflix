@@ -1,5 +1,5 @@
 import * as api from '$lib/api';
-import type { MovieDetails, MovieImages, MovieList } from '$lib/types.js';
+import type { MovieDetails, MovieList } from '$lib/types.js';
 
 export async function load({ fetch }) {
 	const [trending, now_playing, upcoming] = await Promise.all([
