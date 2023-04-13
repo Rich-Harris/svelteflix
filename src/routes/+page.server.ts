@@ -1,13 +1,14 @@
 import { tmdb } from '$lib/server/tmdb.js';
-import type { Image, MovieResult, TvResult } from 'moviedb-promise';
+import type { Image, MovieResult } from 'moviedb-promise';
 
 export async function load() {
-	const [{ results: movies }, { results: tv }] = await Promise.all([
-		tmdb.trending({ media_type: 'movie', time_window: 'day' }),
-		tmdb.trending({ media_type: 'tv', time_window: 'day' })
-	]);
+	const trending = tmdb.trending({ media_type: 'movie', time_window: 'day' });
+	const popular = tmdb.moviePopular();
+	const top_rated = tmdb.movieTopRated();
+	const now_playing = tmdb.movieNowPlaying();
+	const upcoming = tmdb.upcomingMovies({ region: 'us' });
 
-	const featured = movies!.shift() as MovieResult;
+	const featured = (await trending).results!.shift() as MovieResult;
 
 	const images = await tmdb.movieImages({
 		id: featured.id!,
@@ -17,11 +18,14 @@ export async function load() {
 	const backdrop = images.backdrops![0] as Image;
 
 	return {
-		movies: movies as MovieResult[],
-		tv: tv as TvResult[],
+		trending: (await trending).results as MovieResult[],
+		popular: (await popular).results as MovieResult[],
+		top_rated: (await top_rated).results as MovieResult[],
+		now_playing: (await now_playing).results as MovieResult[],
+		upcoming: (await upcoming).results as MovieResult[],
 		featured: {
-			backdrop,
-			info: featured
+			movie: featured,
+			backdrop
 		}
 	};
 }

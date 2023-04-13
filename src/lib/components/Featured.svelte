@@ -1,8 +1,8 @@
 <script lang="ts">
-	import type { Image, MovieResult, TvResult } from 'moviedb-promise';
+	import type { Image, MovieResult } from 'moviedb-promise';
 	import Stars from './Stars.svelte';
 
-	export let item: MovieResult | TvResult;
+	export let item: MovieResult;
 	export let title: string;
 	export let backdrop: Image;
 </script>
@@ -63,10 +63,6 @@
 
 	.info p {
 		max-width: 40ch;
-	}
-
-	section {
-		margin: 2rem 0;
 	}
 
 	@media (min-width: 80em) {

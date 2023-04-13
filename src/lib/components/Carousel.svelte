@@ -1,25 +1,14 @@
 <script lang="ts">
-	import type { MovieResult, TvResult } from 'moviedb-promise';
+	import type { MovieResult } from 'moviedb-promise';
 
-	export let items: Array<MovieResult | TvResult>;
-	export let type: 'movies' | 'tv';
-
-	function get_name(item: MovieResult | TvResult) {
-		if ('title' in item) return item.title;
-		if ('name' in item) return item.name;
-	}
+	export let items: MovieResult[];
 </script>
 
 <div class="carousel">
 	{#each items as item}
-		<div class="item">
-			<a href="/{type}/{item.id}">
-				<img src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} alt={get_name(item)} />
-				<div class="info">
-					<!-- <h3>{item.title}</h3> -->
-				</div>
-			</a>
-		</div>
+		<a href="/movies/{item.id}">
+			<img src="https://image.tmdb.org/t/p/w500{item.poster_path}" alt={item.title} />
+		</a>
 	{/each}
 </div>
 
@@ -37,7 +26,7 @@
 		gap: 1rem;
 	}
 
-	.item {
+	a {
 		scroll-snap-align: start;
 	}
 

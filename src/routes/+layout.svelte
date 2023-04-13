@@ -1,22 +1,21 @@
 <script>
+	import { enhance } from '$app/forms';
 	import { page, navigating } from '$app/stores';
 	import NavigatingIndicator from '$lib/components/NavigatingIndicator.svelte';
+	import logo from '$lib/logo.svg';
+	import tmdb from '$lib/tmdb.svg';
 	import '../styles.css';
 </script>
 
 <nav>
+	<a class="logo" href="/"><img class="logo" alt="SvelteFlix" src={logo} /></a>
+
 	<div class="links">
-		<a href="/">Home</a>
-		<a href="/movies">Movies</a>
-		<a href="/tv">TV</a>
-	</div>
-
-	<div class="search">
 		<a href="/search">Search</a>
-	</div>
-
-	<div class="user">
 		<a href="/watchlist">Watchlist</a>
+		<form method="POST" action="/logout" use:enhance>
+			<button>Logout</button>
+		</form>
 	</div>
 </nav>
 
@@ -25,7 +24,9 @@
 </main>
 
 <footer>
-	<p>Data provided by <a href="https://www.themoviedb.org/">TMDb</a></p>
+	<p>
+		Data provided by <a href="https://www.themoviedb.org/"><img alt="The Movie DB" src={tmdb} /></a>
+	</p>
 </footer>
 
 {#if $navigating}
@@ -40,9 +41,27 @@
 	}
 
 	nav {
-		display: grid;
-		grid-template-columns: 1fr 1fr 1fr;
+		display: flex;
 		width: 100%;
+		align-items: center;
+		justify-content: space-between;
+		color: var(--accent);
+	}
+
+	a {
+		text-decoration: none;
+	}
+
+	button {
+		background: none;
+		border: none;
+		font-family: inherit;
+		font-size: inherit;
+		color: inherit;
+	}
+
+	.links {
+		display: flex;
 		align-items: center;
 	}
 
@@ -57,11 +76,7 @@
 		gap: 1em;
 	}
 
-	.search {
-		text-align: center;
-	}
-
-	.user {
-		text-align: right;
+	.logo {
+		height: 100%;
 	}
 </style>

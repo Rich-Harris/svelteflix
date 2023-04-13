@@ -1,8 +1,9 @@
 <script lang="ts">
+	import type { MovieResult } from 'moviedb-promise';
 	import { createEventDispatcher, onMount } from 'svelte';
 
-	export let items: any[];
-	export let next: string;
+	export let items: MovieResult[];
+	export let next: string | null;
 
 	const dispatch = createEventDispatcher();
 
@@ -58,9 +59,7 @@
 	>
 		{#each items.slice(a, b) as item}
 			<div class="item">
-				<div class="poster">
-					{item}
-				</div>
+				<img alt={item.title} src="https://image.tmdb.org/t/p/w500{item.poster_path}" />
 			</div>
 		{/each}
 	</div>
@@ -87,12 +86,9 @@
 		padding: 0.5rem;
 	}
 
-	.poster {
-		display: grid;
-		place-items: center;
-		background: #aaa;
-		aspect-ratio: 2 / 3;
-		color: black;
+	img {
+		width: 100%;
+		height: auto;
 	}
 
 	@media (min-width: 30rem) {
