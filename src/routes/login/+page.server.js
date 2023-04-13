@@ -8,12 +8,16 @@ const schema = z.object({
 	password: z.string()
 });
 
-export async function load({ locals }) {
-	console.log('event.locals.user', locals.user);
+export function load({ request, url }) {
+	const referer = request.headers.get('referer');
+
+	const redirect_to = referer?.startsWith(url.origin) ? encodeURIComponent(referer) : null;
+
+	return { redirect_to };
 }
 
 export const actions = {
-	async register({ request, cookies }) {
+	async register({ request, cookies, url }) {
 		const form = await request.formData();
 
 		const { email, password } = schema.parse({
@@ -36,10 +40,10 @@ export const actions = {
 			cookies.set('supabase.auth.token', data.session.access_token);
 		}
 
-		throw redirect(303, '/');
+		throw redirect(303, url.searchParams.get('redirect_to') ?? '/');
 	},
 
-	async login({ request, cookies }) {
+	async login({ request, cookies, url }) {
 		const form = await request.formData();
 
 		const { email, password } = schema.parse({
@@ -62,6 +66,6 @@ export const actions = {
 			cookies.set('supabase.auth.token', data.session.access_token);
 		}
 
-		throw redirect(303, '/');
+		throw redirect(303, url.searchParams.get('redirect_to') ?? '/');
 	}
 };

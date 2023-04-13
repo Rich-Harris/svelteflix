@@ -1,7 +1,9 @@
 import { browser } from '$app/environment';
 import { error } from '@sveltejs/kit';
+import type { Image } from './types';
 
-export const base = 'https://api.movies.tastejs.com';
+const base = 'https://api.movies.tastejs.com';
+const media_base = 'https://image.tmdb.org/t/p';
 
 const cache = new Map();
 
@@ -30,4 +32,8 @@ export async function get(
 	}
 
 	return data;
+}
+
+export function media(file_path: string, width: number) {
+	return `${media_base}/w${width}${file_path}`;
 }

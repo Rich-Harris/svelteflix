@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { media } from '$lib/api';
 	import type { MovieListResult } from '$lib/types';
 
 	export let title: string;
@@ -6,7 +7,7 @@
 	export let movies: MovieListResult[];
 </script>
 
-<h2>
+<h2 class="column">
 	{title}
 	{#if href}<a {href}>see all</a>{/if}
 </h2>
@@ -14,13 +15,14 @@
 <div class="carousel">
 	{#each movies as movie}
 		<a href="/movies/{movie.id}">
-			<img src="https://image.tmdb.org/t/p/w500{movie.poster_path}" alt={movie.title} />
+			<img src={media(movie.poster_path, 500)} alt={movie.title} />
 		</a>
 	{/each}
 </div>
 
 <style>
 	.carousel {
+		--padding: max(var(--side), calc(var(--side) + (100vw - var(--column)) / 2));
 		display: flex;
 		height: 20rem;
 		overflow-x: auto;
@@ -28,8 +30,8 @@
 		white-space: nowrap;
 		overscroll-behavior-x: contain;
 		scroll-snap-type: x mandatory;
-		scroll-padding-left: var(--side);
-		padding: 0 var(--side);
+		scroll-padding-left: var(--padding);
+		padding: 0 var(--padding);
 		gap: 1rem;
 	}
 
@@ -50,6 +52,6 @@
 
 	img {
 		height: 100%;
-		width: auto;
+		aspect-ratio: 2 / 3;
 	}
 </style>

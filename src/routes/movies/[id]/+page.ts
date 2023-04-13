@@ -1,7 +1,7 @@
 import * as api from '$lib/api';
 import type { MovieDetails } from '$lib/types.js';
 
-export async function load({ params, fetch }) {
+export async function load({ data, params, fetch }) {
 	const movie = (await api.get(fetch, `/movie/${params.id}`, {
 		append_to_response: 'images,videos,recommendations'
 	})) as MovieDetails;
@@ -15,6 +15,7 @@ export async function load({ params, fetch }) {
 	});
 
 	return {
+		in_watchlist: data.in_watchlist,
 		movie,
 		trailer
 	};

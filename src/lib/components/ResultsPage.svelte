@@ -1,9 +1,10 @@
 <script lang="ts">
 	import { afterNavigate } from '$app/navigation';
-	import type { MovieListResult } from '$lib/types';
+	import { media } from '$lib/api';
+	import type { MovieDetails, MovieListResult } from '$lib/types';
 	import { createEventDispatcher, onMount } from 'svelte';
 
-	export let movies: MovieListResult[];
+	export let movies: Array<MovieListResult | MovieDetails>;
 	export let next: string | null;
 
 	const dispatch = createEventDispatcher();
@@ -62,10 +63,10 @@
 		style:padding-top="{padding_top}px"
 		style:padding-bottom="{padding_bottom}px"
 	>
-		{#each movies.slice(a, b) as item}
-			<div class="item">
-				<img alt={item.title} src="https://image.tmdb.org/t/p/w500{item.poster_path}" />
-			</div>
+		{#each movies.slice(a, b) as movie}
+			<a href="/movies/{movie.id}">
+				<img alt={movie.title} src={media(movie.poster_path, 500)} />
+			</a>
 		{/each}
 	</div>
 
@@ -89,7 +90,7 @@
 		margin: 0 -0.5rem;
 	}
 
-	.item {
+	a {
 		padding: 0.5rem;
 	}
 

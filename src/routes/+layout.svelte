@@ -5,6 +5,8 @@
 	import logo from '$lib/images/logo.svg';
 	import tmdb from '$lib/images/tmdb.svg';
 	import '../styles.css';
+
+	export let data;
 </script>
 
 <nav>
@@ -12,10 +14,16 @@
 
 	<div class="links">
 		<a href="/search">Search</a>
-		<a href="/watchlist">Watchlist</a>
-		<form method="POST" action="/logout" use:enhance>
-			<button>Logout</button>
-		</form>
+
+		{#if data.user}
+			<a href="/watchlist">Watchlist</a>
+
+			<form method="POST" action="/logout" use:enhance>
+				<button>Log out</button>
+			</form>
+		{:else}
+			<a href="/login">Log in or register</a>
+		{/if}
 	</div>
 </nav>
 
@@ -43,10 +51,17 @@
 	nav {
 		display: flex;
 		width: 100%;
+		height: 3rem;
 		align-items: center;
 		justify-content: space-between;
 		color: var(--accent);
-		max-width: 80rem;
+		max-width: var(--column);
+	}
+
+	footer {
+		display: flex;
+		height: 5rem;
+		align-items: center;
 	}
 
 	a {
@@ -59,6 +74,7 @@
 		font-family: inherit;
 		font-size: inherit;
 		color: inherit;
+		cursor: pointer;
 	}
 
 	.links {

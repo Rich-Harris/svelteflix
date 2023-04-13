@@ -1,11 +1,11 @@
 <script>
 	import Carousel from '$lib/components/Carousel.svelte';
-	import Featured from '$lib/components/Featured.svelte';
+	import Hero from './Hero.svelte';
 
 	export let data;
 </script>
 
-<Featured movie={data.movie} backdrop={data.movie.images.backdrops[0]} />
+<Hero movie={data.movie} in_watchlist={data.in_watchlist} />
 
 <div class="column grid" class:has-trailer={!!data.trailer}>
 	{#if data.trailer}
@@ -36,12 +36,14 @@
 	</dl>
 </div>
 
-<Carousel title="You might also like..." movies={data.movie.recommendations.results} />
+{#if data.movie.recommendations.results.length > 0}
+	<Carousel title="You might also like..." movies={data.movie.recommendations.results} />
+{/if}
 
 <style>
 	.grid {
 		display: grid;
-		max-width: 80rem;
+		max-width: var(--column);
 		margin: 2em auto;
 		grid-template-columns: 1fr 1fr;
 		gap: 2em;
