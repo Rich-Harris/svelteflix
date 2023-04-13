@@ -1,12 +1,6 @@
 import { supabase } from '$lib/server/supabase.js';
 import { redirect } from '@sveltejs/kit';
 import { fail } from '@sveltejs/kit';
-import { z } from 'zod';
-
-const schema = z.object({
-	email: z.string().email(),
-	password: z.string()
-});
 
 export async function load() {
 	throw redirect(307, '/');

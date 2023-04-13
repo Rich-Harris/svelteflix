@@ -1,6 +1,5 @@
 <script>
 	import ResultsPage from '$lib/components/ResultsPage.svelte';
-	import { page } from '$app/stores';
 
 	export let data;
 </script>
