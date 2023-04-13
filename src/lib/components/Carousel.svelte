@@ -36,6 +36,10 @@
 		gap: 1rem;
 	}
 
+	.carousel::-webkit-scrollbar {
+		display: none;
+	}
+
 	h2 {
 		font-size: 2.4rem;
 		padding: 0 var(--side);
