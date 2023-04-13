@@ -5,9 +5,12 @@
 	import { enhance } from '$app/forms';
 	import type { MovieDetails } from '$lib/types';
 	import { smoothload } from '$lib/actions';
+	import { invalidateAll } from '$app/navigation';
 
 	export let movie: MovieDetails;
 	export let in_watchlist: boolean;
+
+	let submitting = false;
 
 	$: backdrop =
 		movie.images.backdrops.find((image) => !image.iso_639_1) || movie.images.backdrops[0];
@@ -29,9 +32,21 @@
 		<p>{movie.overview}</p>
 
 		{#if $page.data.user}
-			<form method="POST" action="/watchlist?/{in_watchlist ? 'delete' : 'add'}" use:enhance>
+			<form
+				method="POST"
+				action="/watchlist?/{in_watchlist ? 'delete' : 'add'}"
+				use:enhance={({ form }) => {
+					in_watchlist = !in_watchlist;
+					submitting = true;
+
+					return async () => {
+						await invalidateAll();
+						submitting = false;
+					};
+				}}
+			>
 				<input type="hidden" name="movie_id" value={movie.id} />
-				<button>
+				<button disabled={submitting}>
 					{in_watchlist ? 'Remove this from your watchlist' : 'Add this to your watchlist'}
 				</button>
 			</form>
