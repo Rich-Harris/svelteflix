@@ -35,7 +35,7 @@
 			<form
 				method="POST"
 				action="/watchlist?/{in_watchlist ? 'delete' : 'add'}"
-				use:enhance={({ form }) => {
+				use:enhance={() => {
 					in_watchlist = !in_watchlist;
 					submitting = true;
 
