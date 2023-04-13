@@ -4,6 +4,7 @@
 	import { media } from '$lib/api';
 	import { enhance } from '$app/forms';
 	import type { MovieDetails } from '$lib/types';
+	import { smoothload } from '$lib/actions';
 
 	export let movie: MovieDetails;
 	export let in_watchlist: boolean;
@@ -18,6 +19,7 @@
 			src={media(backdrop.file_path, 1280)}
 			style="aspect-ratio: {backdrop.aspect_ratio}"
 			alt={movie.title}
+			use:smoothload
 		/>
 	</div>
 

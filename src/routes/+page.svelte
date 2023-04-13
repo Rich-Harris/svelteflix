@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { smoothload } from '$lib/actions.js';
 	import { media } from '$lib/api';
 	import Carousel from '$lib/components/Carousel.svelte';
 
@@ -22,6 +23,7 @@
 			alt={data.featured.title}
 			src={media(backdrop.file_path, 1280)}
 			style="aspect-ratio: {backdrop.aspect_ratio}"
+			use:smoothload
 		/>
 
 		{#if logo}
@@ -30,6 +32,7 @@
 				alt={data.featured.title}
 				src={media(logo.file_path, 500)}
 				style="aspect-ratio: {logo.aspect_ratio}"
+				use:smoothload
 			/>
 		{/if}
 	</a>

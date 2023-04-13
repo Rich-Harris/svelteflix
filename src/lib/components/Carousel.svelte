@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { smoothload } from '$lib/actions';
 	import { media } from '$lib/api';
 	import type { MovieListResult } from '$lib/types';
 
@@ -15,7 +16,7 @@
 <div class="carousel">
 	{#each movies as movie}
 		<a href="/movies/{movie.id}">
-			<img src={media(movie.poster_path, 500)} alt={movie.title} />
+			<img src={media(movie.poster_path, 500)} alt={movie.title} use:smoothload />
 		</a>
 	{/each}
 </div>
