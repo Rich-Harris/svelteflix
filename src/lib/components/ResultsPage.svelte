@@ -66,7 +66,11 @@
 	>
 		{#each movies.slice(a, b) as movie}
 			<a href="/movies/{movie.id}">
-				<img alt={movie.title} src={media(movie.poster_path, 500)} use:smoothload />
+				{#if movie.poster_path}
+					<img alt={movie.title} src={media(movie.poster_path, 500)} use:smoothload />
+				{:else}
+					<span>{movie.title}</span>
+				{/if}
 			</a>
 		{/each}
 	</div>

@@ -115,6 +115,7 @@
 		}
 
 		.backdrop::after {
+			width: 15rem;
 			height: 100%;
 			left: 100px;
 			left: 0;
