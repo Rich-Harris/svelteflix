@@ -85,6 +85,16 @@
 		height: 0;
 		flex: 1;
 		overflow-y: auto;
+
+		/* Hide scrollbar for Firefox */
+		scrollbar-width: none;
+
+		/* Hide scrollbar for IE and Edge */
+		-ms-overflow-style: none;
+	}
+
+	:global(.viewport::-webkit-scrollbar) {
+		display: none;
 	}
 
 	.results {
