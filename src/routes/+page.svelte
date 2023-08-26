@@ -51,14 +51,29 @@
 
 	.backdrop {
 		width: 100%;
+		border-radius: 5px;
+		-webkit-mask-image: linear-gradient(to bottom, black 0%, black 80%, transparent 100%);
+		mask-image: linear-gradient(to bottom, black 0%, black 80%, transparent 100%);
 	}
+
+	/* .logo {
+		position: absolute;
+		width: 30%;
+		height: 100%;
+		bottom: 0;
+		object-fit: contain;
+		object-position: 50% 75%;
+		filter: drop-shadow(0 0 3rem black) drop-shadow(0 0 0.5rem black);
+	} */
 
 	.logo {
 		position: absolute;
 		width: 30%;
 		height: 100%;
-		left: 1rem;
 		bottom: 0;
+		left: 0; /* added this line */
+		right: 0; /* added this line */
+		margin: auto; /* added this line */
 		object-fit: contain;
 		object-position: 50% 75%;
 		filter: drop-shadow(0 0 3rem black) drop-shadow(0 0 0.5rem black);

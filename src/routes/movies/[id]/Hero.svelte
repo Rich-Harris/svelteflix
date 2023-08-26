@@ -47,7 +47,7 @@
 			>
 				<input type="hidden" name="movie_id" value={movie.id} />
 				<button disabled={submitting}>
-					{in_watchlist ? 'Remove this from your watchlist' : 'Add this to your watchlist'}
+					{in_watchlist ? 'Remove from watchlist' : 'Add to watchlist'}
 				</button>
 			</form>
 		{:else}
@@ -86,6 +86,7 @@
 		padding: var(--side);
 		margin-top: -4rem;
 		gap: 1rem;
+		text-shadow: 0 0 2px black;
 	}
 
 	.info h1,
@@ -102,6 +103,12 @@
 		border: none;
 		color: black;
 		padding: 1rem;
+		font-weight: 600;
+	}
+
+	button:hover {
+		cursor: pointer;
+		filter: brightness(110%);
 	}
 
 	button:active {
@@ -130,7 +137,7 @@
 		}
 
 		.backdrop::after {
-			width: 15rem;
+			width: 20rem;
 			height: 100%;
 			left: 100px;
 			left: 0;

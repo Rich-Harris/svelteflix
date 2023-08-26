@@ -102,7 +102,8 @@
 		display: grid;
 		grid-template-rows: 2em repeat(auto, 1fr);
 		grid-template-columns: repeat(var(--columns), 1fr);
-		margin: 0 -0.5rem;
+		/* margin: 0 -0.5rem; */
+		overflow-x: none;
 	}
 
 	a {
@@ -113,6 +114,7 @@
 		width: 100%;
 		aspect-ratio: 2 / 3;
 		height: auto;
+		border-radius: 5px;
 	}
 
 	@media (min-width: 30rem) {

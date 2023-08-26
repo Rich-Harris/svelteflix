@@ -59,6 +59,7 @@
 
 	img {
 		width: 100%;
+		border-radius: 5px;
 	}
 
 	/* @media (min-width: 40rem) {

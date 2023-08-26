@@ -94,6 +94,7 @@
 	.links {
 		display: flex;
 		align-items: center;
+		font-size: 0.8rem;
 	}
 
 	main.infinite {
@@ -108,6 +109,6 @@
 	}
 
 	.logo {
-		height: 100%;
+		height: 110%;
 	}
 </style>
