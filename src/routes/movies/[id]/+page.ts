@@ -15,7 +15,7 @@ export async function load({ data, params, fetch }) {
 	});
 
 	return {
-		in_watchlist: data.in_watchlist,
+		in_watchlist: data?.in_watchlist,
 		movie,
 		trailer,
 		title: movie.title

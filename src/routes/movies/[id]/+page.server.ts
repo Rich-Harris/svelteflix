@@ -15,8 +15,11 @@ export async function load({ locals, params }) {
 		}
 
 		return {
-			in_watchlist: data!.length > 0
-		};
+    in_watchlist: data ? data.length > 0 : false
+};
+
+
+
 	}
 
 	return {
