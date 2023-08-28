@@ -6,6 +6,7 @@
 	import type { MovieDetails } from '$lib/types';
 	import { smoothload } from '$lib/actions';
 	import { invalidateAll } from '$app/navigation';
+	import { Icon, Play } from 'svelte-hero-icons';
 
 	export let movie: MovieDetails;
 	export let in_watchlist: boolean;
@@ -32,24 +33,30 @@
 		<p>{movie.overview}</p>
 
 		{#if $page.data.user}
-			<form
-				method="POST"
-				action="/watchlist?/{in_watchlist ? 'delete' : 'add'}"
-				use:enhance={() => {
-					in_watchlist = !in_watchlist;
-					submitting = true;
+			<div class="button-group">
+				<form
+					method="POST"
+					action="/watchlist?/{in_watchlist ? 'delete' : 'add'}"
+					use:enhance={() => {
+						in_watchlist = !in_watchlist;
+						submitting = true;
 
-					return async () => {
-						await invalidateAll();
-						submitting = false;
-					};
-				}}
-			>
-				<input type="hidden" name="movie_id" value={movie.id} />
-				<button disabled={submitting}>
-					{in_watchlist ? 'Remove from watchlist' : 'Add to watchlist'}
-				</button>
-			</form>
+						return async () => {
+							await invalidateAll();
+							submitting = false;
+						};
+					}}
+				>
+					<input type="hidden" name="movie_id" value={movie.id} />
+					<button disabled={submitting}>
+						{in_watchlist ? 'Remove from watchlist' : 'Add to watchlist'}
+					</button>
+				</form>
+
+				<a href={`https://ww4.fmovies.co/search/?q=${movie.title}`} target="_blank" class="">
+					<button>Play</button>
+				</a>
+			</div>
 		{:else}
 			<p><a href="/login">Log in or register</a> to add this to your watchlist.</p>
 		{/if}
@@ -57,6 +64,14 @@
 </div>
 
 <style>
+	.button-group {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-center;
+		gap: 1rem;
+	}
+
 	.featured {
 		position: relative;
 		display: grid;
@@ -101,7 +116,7 @@
 	button {
 		background: var(--accent);
 		border: none;
-		color: black;
+		color: white;
 		padding: 1rem;
 		font-weight: 600;
 	}

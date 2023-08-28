@@ -69,6 +69,7 @@ export const actions = {
 			cookies.set('supabase.auth.token', data.session.access_token);
 		}
 
-		throw redirect(303, url.searchParams.get('redirect_to') ?? '/');
+		// throw redirect(303, url.searchParams.get('redirect_to') ?? '/');
+		throw redirect(303, '/');
 	}
 };

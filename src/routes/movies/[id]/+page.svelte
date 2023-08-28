@@ -1,6 +1,7 @@
 <script>
 	import Carousel from '$lib/components/Carousel.svelte';
 	import Hero from './Hero.svelte';
+	import Stars from '$lib/components/Stars.svelte';
 
 	export let data;
 </script>
@@ -22,8 +23,9 @@
 		<dt>Released</dt>
 		<dd>{data.movie.release_date}</dd>
 
-		<dt>Runtime</dt>
-		<dd>{data.movie.runtime} minutes</dd>
+		<dt>Rating</dt>
+		<dd>{data.movie.vote_average}</dd>
+		<!-- <Stars vote_average={data.movie.vote_average} vote_count={data.movie.vote_count} /> -->
 
 		<dt>Budget</dt>
 		<dd>${Math.round(data.movie.budget / 1e6)}M</dd>
@@ -33,6 +35,9 @@
 
 		<dt>Genre</dt>
 		<dd class="genres">{data.movie.genres?.map((g) => g.name).join(', ')}</dd>
+
+		<dt>Runtime</dt>
+		<dd>{data.movie.runtime} minutes</dd>
 	</dl>
 </div>
 
@@ -51,6 +56,10 @@
 	iframe {
 		aspect-ratio: 16 / 9;
 		width: 100%;
+	}
+
+	.trailer {
+		border-radius: 10px;
 	}
 
 	.data {
@@ -73,6 +82,13 @@
 
 	dd {
 		margin: 0;
+	}
+
+	.watch-button {
+		background-color: var(--accent);
+		padding: 0.5em 1em;
+		text-decoration: none;
+		text-transform: uppercase;
 	}
 
 	.genres {

@@ -14,6 +14,6 @@ export const views: Record<string, View> = {
 	},
 	upcoming: {
 		title: 'Upcoming',
-		endpoint: 'movie/now_playing'
+		endpoint: 'movie/upcoming'
 	}
 };

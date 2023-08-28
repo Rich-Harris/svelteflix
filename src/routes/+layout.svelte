@@ -36,7 +36,7 @@
 				<button>Log out</button>
 			</form>
 		{:else}
-			<a href="/login">Log in or register</a>
+			<a href="/login">Log in | Register</a>
 		{/if}
 	</div>
 </nav>
@@ -94,7 +94,7 @@
 	.links {
 		display: flex;
 		align-items: center;
-		font-size: 0.8rem;
+		font-size: 0.9rem;
 	}
 
 	main.infinite {

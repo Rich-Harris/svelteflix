@@ -26,6 +26,7 @@
 	},
 	"dependencies": {
 		"@supabase/supabase-js": "^2.15.0",
+		"svelte-hero-icons": "^5.0.0",
 		"zod": "^3.21.4"
 	},
 	"type": "module"

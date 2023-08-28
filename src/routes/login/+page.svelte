@@ -3,7 +3,7 @@
 </script>
 
 <div class="column">
-	<h1>Log in or register</h1>
+	<h1>Log in | Register</h1>
 
 	<form method="POST">
 		<label>
