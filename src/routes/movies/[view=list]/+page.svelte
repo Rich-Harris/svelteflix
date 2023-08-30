@@ -18,6 +18,7 @@
 			if (appending) return;
 
 			try {
+				appending = true;
 				const next = await api.get(fetch, data.endpoint, {
 					page: String(data.next_page)
 				});
