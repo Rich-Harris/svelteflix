@@ -15,7 +15,7 @@
 </svelte:head>
 
 <div class="column">
-	<h1>Today's top movies</h1>
+	<!-- <h1>Today's top movies</h1> -->
 
 	<a href="/movies/{data.featured.id}">
 		<img

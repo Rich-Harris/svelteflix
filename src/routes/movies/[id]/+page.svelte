@@ -23,21 +23,14 @@
 		<dt>Released</dt>
 		<dd>{data.movie.release_date}</dd>
 
-		<dt>Rating</dt>
-		<dd>{data.movie.vote_average}</dd>
-		<!-- <Stars vote_average={data.movie.vote_average} vote_count={data.movie.vote_count} /> -->
-
 		<dt>Budget</dt>
 		<dd>${Math.round(data.movie.budget / 1e6)}M</dd>
 
-		<dt>Revenue</dt>
-		<dd>${Math.round(data.movie.revenue / 1e6)}M</dd>
-
-		<dt>Genre</dt>
-		<dd class="genres">{data.movie.genres?.map((g) => g.name).join(', ')}</dd>
-
 		<dt>Runtime</dt>
 		<dd>{data.movie.runtime} minutes</dd>
+
+		<dt>Revenue</dt>
+		<dd>${Math.round(data.movie.revenue / 1e6)}M</dd>
 	</dl>
 </div>
 
