@@ -48,11 +48,11 @@
 	<slot />
 </main>
 
-<footer>
+<!-- <footer>
 	<div>
 		<a href="https://github.com/engage-intellect">@engageintellect</a>
 	</div>
-</footer>
+</footer> -->
 
 {#if $navigating}
 	<NavigatingIndicator />
