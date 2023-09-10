@@ -1,10 +1,11 @@
 <script>
 	import ResultsPage from '$lib/components/ResultsPage.svelte';
+	import { slide } from 'svelte/transition';
 
 	export let data;
 </script>
 
-<div class="h-full flex flex-col">
+<div in:slide class="h-full flex flex-col">
 	<div class="p-2 flex flex-col w-full max-w-3xl mx-auto">
 		<div class="text-3xl p-2">Search</div>
 

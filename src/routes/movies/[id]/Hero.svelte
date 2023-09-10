@@ -7,6 +7,7 @@
 	import { smoothload } from '$lib/actions';
 	import { invalidateAll } from '$app/navigation';
 	import { Icon, Play } from 'svelte-hero-icons';
+	import { slide } from 'svelte/transition';
 
 	export let movie: MovieDetails;
 	export let in_watchlist: boolean;
@@ -27,7 +28,7 @@
 		/>
 	</div>
 
-	<div class="info">
+	<div in:slide class="info">
 		<h1>{movie.title}</h1>
 		<Stars vote_average={movie.vote_average} vote_count={movie.vote_count} />
 		<p>{movie.overview}</p>

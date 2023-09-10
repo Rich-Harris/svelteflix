@@ -2,6 +2,7 @@
 	import { smoothload } from '$lib/actions.js';
 	import { media } from '$lib/api';
 	import Carousel from '$lib/components/Carousel.svelte';
+	import { fade, blur, slide, scale, draw } from 'svelte/transition';
 
 	export let data;
 
@@ -14,7 +15,7 @@
 	<title>SvelteFlix</title>
 </svelte:head>
 
-<div class="column">
+<div in:fade class="">
 	<!-- <h1>Today's top movies</h1> -->
 
 	<a href="/movies/{data.featured.id}">
