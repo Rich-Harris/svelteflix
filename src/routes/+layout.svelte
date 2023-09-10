@@ -59,18 +59,6 @@
 {/if}
 
 <style>
-	nav,
-	footer {
-		padding: 1rem var(--side);
-		margin: 0 auto;
-	}
-
-	footer {
-		display: flex;
-		height: 5rem;
-		align-items: center;
-	}
-
 	a {
 		text-decoration: none;
 	}
@@ -84,24 +72,9 @@
 		cursor: pointer;
 	}
 
-	.links {
-		display: flex;
-		align-items: center;
-		font-size: 0.9rem;
-	}
-
 	main.infinite {
 		height: 0;
 		flex: 1;
 		overflow: hidden;
-	}
-
-	.links {
-		display: flex;
-		gap: 1em;
-	}
-
-	.logo {
-		height: 110%;
 	}
 </style>

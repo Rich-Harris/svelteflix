@@ -9,15 +9,22 @@
 </script>
 
 <div class="flex flex-col mb-5">
-	<div class=" text-2xl my-2">
+	<div class="text-2xl my-2">
 		{title}
 		{#if href}<a {href} class="text-[--accent]">see all</a>{/if}
 	</div>
 
 	<div class="carousel">
 		{#each movies as movie}
-			<a href="/movies/{movie.id}">
-				<img src={media(movie.poster_path, 500)} alt={movie.title} use:smoothload />
+			<a href="/movies/{movie.id}" class="">
+				<div class="overflow-hidden rounded-lg">
+					<img
+						src={media(movie.poster_path, 500)}
+						alt={movie.title}
+						use:smoothload
+						class="md:hover:scale-[102%] md:hover:saturate-150 rounded-lg object-cover transition-all duration-500"
+					/>
+				</div>
 			</a>
 		{/each}
 	</div>
@@ -34,23 +41,12 @@
 		scroll-snap-type: x mandatory;
 		scroll-padding-left: var(--padding);
 		padding: 0 var(--padding);
-		gap: 1rem;
+		gap: 0.5rem;
 		scrollbar-width: none;
 	}
 
 	.carousel::-webkit-scrollbar {
 		display: none;
-	}
-
-	h2 {
-		font-size: 2.4rem;
-		padding: 0 var(--side);
-		margin-top: 4rem;
-	}
-
-	h2 a {
-		color: var(--accent);
-		font-size: 1.6rem;
 	}
 
 	a {
@@ -61,7 +57,6 @@
 
 	img {
 		width: 100%;
-		border-radius: 5px;
 	}
 
 	/* @media (min-width: 40rem) {

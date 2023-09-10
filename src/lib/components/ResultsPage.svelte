@@ -65,9 +65,14 @@
 		style:padding-bottom="{padding_bottom}px"
 	>
 		{#each movies.slice(a, b) as movie}
-			<a href="/movies/{movie.id}">
+			<a href="/movies/{movie.id}" class="overflow-hidden rounded-lg">
 				{#if movie.poster_path}
-					<img alt={movie.title} src={media(movie.poster_path, 500)} use:smoothload />
+					<img
+						alt={movie.title}
+						src={media(movie.poster_path, 500)}
+						class="md:hover:scale-[102%] transition-all duration-500 rounded-lg"
+						use:smoothload
+					/>
 				{:else}
 					<span>{movie.title}</span>
 				{/if}
@@ -81,18 +86,6 @@
 </div>
 
 <style>
-	.viewport {
-		height: 0;
-		flex: 1;
-		overflow-y: auto;
-
-		/* Hide scrollbar for Firefox */
-		scrollbar-width: none;
-
-		/* Hide scrollbar for IE and Edge */
-		-ms-overflow-style: none;
-	}
-
 	:global(.viewport::-webkit-scrollbar) {
 		display: none;
 	}
@@ -104,17 +97,13 @@
 		grid-template-columns: repeat(var(--columns), 1fr);
 		/* margin: 0 -0.5rem; */
 		overflow-x: none;
-	}
-
-	a {
-		padding: 0.5rem;
+		gap: 0.5rem;
 	}
 
 	img {
 		width: 100%;
 		aspect-ratio: 2 / 3;
 		height: auto;
-		border-radius: 5px;
 	}
 
 	@media (min-width: 30rem) {
