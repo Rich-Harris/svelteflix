@@ -5,7 +5,7 @@
 </script>
 
 <div class="h-full flex flex-col">
-	<div class="p-2 flex flex-col w-full">
+	<div class="p-2 flex flex-col w-full max-w-3xl mx-auto">
 		<div class="text-3xl p-2">Search</div>
 
 		<form class="p-2">

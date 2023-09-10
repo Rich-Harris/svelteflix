@@ -48,12 +48,16 @@
 					}}
 				>
 					<input type="hidden" name="movie_id" value={movie.id} />
-					<button disabled={submitting}>
+					<button disabled={submitting} class="text-xs md:text-base">
 						{in_watchlist ? 'Remove from watchlist' : 'Add to watchlist'}
 					</button>
 				</form>
 
-				<a href={`https://ww4.fmovies.co/search/?q=${movie.title}`} target="_blank" class="">
+				<a
+					href={`https://ww4.fmovies.co/search/?q=${movie.title}`}
+					target="_blank"
+					class=" text-xs md:text-base"
+				>
 					<button>Play</button>
 				</a>
 			</div>
@@ -87,7 +91,7 @@
 		content: '';
 		position: absolute;
 		width: 100%;
-		height: 8rem;
+		height: 5rem;
 		left: 0;
 		bottom: 0;
 		background: linear-gradient(to top, black, transparent);
@@ -98,7 +102,7 @@
 		flex-direction: column;
 		bottom: 0;
 		width: 100%;
-		padding: 4rem;
+		padding: 2rem;
 		margin-top: -4rem;
 		gap: 1rem;
 		text-shadow: 0 0 2px black;
