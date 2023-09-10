@@ -2,7 +2,7 @@
 	import Carousel from '$lib/components/Carousel.svelte';
 	import Hero from './Hero.svelte';
 
-	import { fade } from 'svelte/transition';
+	import { fade, slide } from 'svelte/transition';
 
 	export let data;
 </script>
