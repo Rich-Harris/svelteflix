@@ -59,9 +59,20 @@
 		display: block;
 		margin: 0.5rem 0 0 0;
 		width: 100%;
+		color: black;
 	}
 
 	button {
 		flex: 1;
+		background-color: var(--accent);
+	}
+
+	button:hover {
+		cursor: pointer;
+		filter: brightness(110%);
+	}
+
+	button:active {
+		filter: brightness(0.9);
 	}
 </style>

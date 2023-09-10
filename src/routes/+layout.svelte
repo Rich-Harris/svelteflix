@@ -28,17 +28,19 @@
 	<a class="w-full" href="/"><img class="w-24" alt="SvelteFlix" src={logo} /></a>
 
 	<div class="flex flex-row gap-5 w-full justify-end">
-		<a href="/search">Search</a>
+		<div class="flex justify-between gap-5">
+			<a href="/search">Search</a>
 
-		{#if data.user}
-			<a href="/watchlist">Watchlist</a>
+			{#if data.user}
+				<a href="/watchlist">Watchlist</a>
 
-			<form method="POST" action="/logout" use:enhance>
-				<button>Log out</button>
-			</form>
-		{:else}
-			<a href="/login">Log in | Register</a>
-		{/if}
+				<form method="POST" action="/logout" use:enhance>
+					<button>Log out</button>
+				</form>
+			{:else}
+				<a href="/login">Log in | Register</a>
+			{/if}
+		</div>
 	</div>
 </div>
 
@@ -48,7 +50,7 @@
 
 <footer>
 	<div>
-		Data provided by <a href="https://www.themoviedb.org/"><img alt="The Movie DB" src={tmdb} /></a>
+		<a href="https://github.com/engage-intellect">@engageintellect</a>
 	</div>
 </footer>
 

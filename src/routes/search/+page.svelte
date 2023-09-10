@@ -9,7 +9,14 @@
 		<div class="text-3xl p-2">Search</div>
 
 		<form class="p-2">
-			<input name="query" value={data.query} autocomplete="off" spellcheck="false" />
+			<input
+				placeholder="Search for something..."
+				name="query"
+				value={data.query}
+				autocomplete="off"
+				spellcheck="false"
+				autofocus
+			/>
 		</form>
 	</div>
 
@@ -23,12 +30,12 @@
 <style>
 	input {
 		font-family: inherit;
-		font-size: 2em;
-		padding: 0.5em;
+		font-size: 1.5rem;
+		padding: 0.5rem;
 		width: 100%;
 		background: rgba(255, 255, 255, 0.1);
 		border: none;
-		border-radius: 0.2rem;
+		border-radius: 0.25rem;
 		color: white;
 	}
 

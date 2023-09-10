@@ -28,7 +28,7 @@
 
 		{#if logo}
 			<img
-				class="absolute w-[10%] left-10"
+				class="absolute w-[20%] md:w-[10%] left-10"
 				alt={data.featured.title}
 				src={media(logo.file_path, 500)}
 				style="aspect-ratio: {logo.aspect_ratio}"

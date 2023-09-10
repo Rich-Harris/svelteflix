@@ -16,6 +16,7 @@
 		Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 	color: #ccc;
 	background: radial-gradient(circle at 50% 0%, hsl(0, 0%, 8%) 0%, hsl(0, 0%, 2%) 100%);
+	background-color: black;
 	background-attachment: fixed;
 	background-size: 100vw 100vh;
 	::-webkit-scrollbar {

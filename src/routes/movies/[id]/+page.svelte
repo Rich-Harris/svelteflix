@@ -23,24 +23,26 @@
 	{/if}
 
 	<div class="flex flex-col gap-2 w-full p-4 bg-[--accent] text-lg">
-		<div class="flex gap-2">
-			<div class="font-bold text-xl">Released</div>
-			<div>{data.movie.release_date}</div>
-		</div>
+		<div class="max-w-sm">
+			<div class="flex gap-2">
+				<div class="font-bold text-xl w-full">Released:</div>
+				<div class="w-full">{data.movie.release_date}</div>
+			</div>
 
-		<div class="flex gap-2">
-			<div class="font-bold">Budget</div>
-			<div>${Math.round(data.movie.budget / 1e6)}M</div>
-		</div>
+			<div class="flex gap-2">
+				<div class="font-bold w-full">Budget:</div>
+				<div class="w-full">${Math.round(data.movie.budget / 1e6)}M</div>
+			</div>
 
-		<div class="flex gap-2">
-			<div class="font-bold">Runtime</div>
-			<div>{data.movie.runtime} minutes</div>
-		</div>
+			<div class="flex gap-2">
+				<div class="font-bold w-full">Runtime:</div>
+				<div class="w-full">{data.movie.runtime} minutes</div>
+			</div>
 
-		<div class="flex gap-2">
-			<div class="font-bold">Revenue</div>
-			<div>${Math.round(data.movie.revenue / 1e6)}M</div>
+			<div class="flex gap-2">
+				<div class="font-bold w-full">Revenue:</div>
+				<div class="w-full">${Math.round(data.movie.revenue / 1e6)}M</div>
+			</div>
 		</div>
 	</div>
 </div>
