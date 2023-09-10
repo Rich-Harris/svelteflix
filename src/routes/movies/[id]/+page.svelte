@@ -23,7 +23,7 @@
 		</div>
 	{/if}
 
-	<div in:slide class="flex flex-col gap-2 w-full p-4 bg-[--accent] text-sm md:text-lg">
+	<div in:slide class="flex flex-col gap-2 w-full p-4 bg-[--accent] text-sm md:text-base">
 		<div class="max-w-md">
 			<div class="flex gap-2">
 				<div class="font-bold w-full uppercase">Runtime:</div>
@@ -45,7 +45,7 @@
 				<div class="w-full">${Math.round(data.movie.revenue / 1e6)}M</div>
 			</div>
 
-			<div class="flex gap-2">
+			<!-- <div class="flex gap-2">
 				<div class="font-bold w-full uppercase">IMDB:</div>
 				<a
 					class=" w-full"
@@ -54,7 +54,16 @@
 				>
 					<div class="underline">Read More</div>
 				</a>
-			</div>
+			</div> -->
+			<button class="bg-black font-bold py-2 px-4 text-sm md:text-base my-2">
+				<a
+					class="w-full"
+					target="_blank"
+					href={`https://www.imdb.com/title/${data.movie.imdb_id}/videogallery/?ref_=tt_pv_vi_sm`}
+				>
+					IMDB Page
+				</a>
+			</button>
 		</div>
 	</div>
 </div>

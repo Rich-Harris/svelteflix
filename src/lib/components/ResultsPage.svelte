@@ -70,7 +70,7 @@
 					<img
 						alt={movie.title}
 						src={media(movie.poster_path, 500)}
-						class="md:hover:scale-[102%] transition-all duration-500 rounded-lg"
+						class="md:hover:scale-[102%] md:hover:saturate-[125%] transition-all duration-500 rounded-lg"
 						use:smoothload
 					/>
 				{:else}

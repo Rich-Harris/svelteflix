@@ -22,7 +22,7 @@
 						src={media(movie.poster_path, 500)}
 						alt={movie.title}
 						use:smoothload
-						class="md:hover:scale-[102%] md:hover:saturate-150 rounded-lg object-cover transition-all duration-500"
+						class="md:hover:scale-[102%] md:hover:saturate-[125%] rounded-lg object-cover transition-all duration-500"
 					/>
 				</div>
 			</a>
