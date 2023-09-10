@@ -8,22 +8,23 @@
 	export let movies: MovieListResult[];
 </script>
 
-<h2 class="column">
-	{title}
-	{#if href}<a {href}>see all</a>{/if}
-</h2>
+<div class="flex flex-col mb-5">
+	<div class=" text-2xl my-2">
+		{title}
+		{#if href}<a {href} class="text-[--accent]">see all</a>{/if}
+	</div>
 
-<div class="carousel">
-	{#each movies as movie}
-		<a href="/movies/{movie.id}">
-			<img src={media(movie.poster_path, 500)} alt={movie.title} use:smoothload />
-		</a>
-	{/each}
+	<div class="carousel">
+		{#each movies as movie}
+			<a href="/movies/{movie.id}">
+				<img src={media(movie.poster_path, 500)} alt={movie.title} use:smoothload />
+			</a>
+		{/each}
+	</div>
 </div>
 
 <style>
 	.carousel {
-		--padding: max(var(--side), calc(var(--side) + (100vw - var(--column)) / 2));
 		display: flex;
 		height: clamp(10rem, 25vw, 20rem);
 		overflow-x: auto;

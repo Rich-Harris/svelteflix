@@ -57,7 +57,7 @@
 
 <svelte:window on:resize={handle_resize} />
 
-<div class="viewport" bind:this={viewport} on:scroll={handle_scroll}>
+<div class="overflow-auto max-h-full" bind:this={viewport} on:scroll={handle_scroll}>
 	<div
 		bind:this={results}
 		class="results"

@@ -19,6 +19,7 @@ export async function load({ url, fetch }) {
 		query,
 		movies: data.results,
 		next_page: data.page! < data.total_pages ? data.page + 1 : null,
-		infinite: true
+		infinite: false
+		// infinite: true
 	};
 }

@@ -4,12 +4,14 @@
 	export let data;
 </script>
 
-<div class="column flex">
-	<h1>Search</h1>
+<div class="h-full flex flex-col">
+	<div class="p-2 flex flex-col w-full">
+		<div class="text-3xl p-2">Search</div>
 
-	<form>
-		<input name="query" value={data.query} autocomplete="off" spellcheck="false" />
-	</form>
+		<form class="p-2">
+			<input name="query" value={data.query} autocomplete="off" spellcheck="false" />
+		</form>
+	</div>
 
 	{#if data.query}
 		{#key data.query}

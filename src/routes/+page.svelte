@@ -19,7 +19,7 @@
 
 	<a href="/movies/{data.featured.id}">
 		<img
-			class="backdrop"
+			class="backdrop md:h-[50vh] object-cover"
 			alt={data.featured.title}
 			src={media(backdrop.file_path, 1280)}
 			style="aspect-ratio: {backdrop.aspect_ratio}"
@@ -28,7 +28,7 @@
 
 		{#if logo}
 			<img
-				class="logo"
+				class="absolute w-[10%] left-10"
 				alt={data.featured.title}
 				src={media(logo.file_path, 500)}
 				style="aspect-ratio: {logo.aspect_ratio}"
@@ -38,9 +38,11 @@
 	</a>
 </div>
 
-<Carousel title="Trending" href="/movies/trending" movies={data.trending} />
-<Carousel title="Now playing" href="/movies/now_playing" movies={data.now_playing} />
-<Carousel title="Upcoming" href="/movies/upcoming" movies={data.upcoming} />
+<div class="px-4">
+	<Carousel title="Trending" href="/movies/trending" movies={data.trending} />
+	<Carousel title="Now playing" href="/movies/now_playing" movies={data.now_playing} />
+	<Carousel title="Upcoming" href="/movies/upcoming" movies={data.upcoming} />
+</div>
 
 <style>
 	a {
@@ -68,12 +70,9 @@
 
 	.logo {
 		position: absolute;
-		width: 30%;
+		width: 25%;
 		height: 100%;
 		bottom: 0;
-		left: 0; /* added this line */
-		right: 0; /* added this line */
-		margin: auto; /* added this line */
 		object-fit: contain;
 		object-position: 50% 75%;
 		filter: drop-shadow(0 0 3rem black) drop-shadow(0 0 0.5rem black);

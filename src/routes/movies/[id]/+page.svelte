@@ -8,30 +8,41 @@
 
 <Hero movie={data.movie} in_watchlist={data.in_watchlist} />
 
-<div class="column grid" class:has-trailer={!!data.trailer}>
+<div class="grid" class:has-trailer={!!data.trailer}>
 	{#if data.trailer}
-		<iframe
-			src="https://www.youtube.com/embed/{data.trailer.key}"
-			title="YouTube video player"
-			frameborder="0"
-			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-			allowfullscreen
-		/>
+		<div class="">
+			<iframe
+				class=""
+				src="https://www.youtube.com/embed/{data.trailer.key}"
+				title="YouTube video player"
+				frameborder="0"
+				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+				allowfullscreen
+			/>
+		</div>
 	{/if}
 
-	<dl class="data">
-		<dt>Released</dt>
-		<dd>{data.movie.release_date}</dd>
+	<div class="flex flex-col gap-2 w-full p-4 bg-[--accent] text-lg">
+		<div class="flex gap-2">
+			<div class="font-bold text-xl">Released</div>
+			<div>{data.movie.release_date}</div>
+		</div>
 
-		<dt>Budget</dt>
-		<dd>${Math.round(data.movie.budget / 1e6)}M</dd>
+		<div class="flex gap-2">
+			<div class="font-bold">Budget</div>
+			<div>${Math.round(data.movie.budget / 1e6)}M</div>
+		</div>
 
-		<dt>Runtime</dt>
-		<dd>{data.movie.runtime} minutes</dd>
+		<div class="flex gap-2">
+			<div class="font-bold">Runtime</div>
+			<div>{data.movie.runtime} minutes</div>
+		</div>
 
-		<dt>Revenue</dt>
-		<dd>${Math.round(data.movie.revenue / 1e6)}M</dd>
-	</dl>
+		<div class="flex gap-2">
+			<div class="font-bold">Revenue</div>
+			<div>${Math.round(data.movie.revenue / 1e6)}M</div>
+		</div>
+	</div>
 </div>
 
 {#if data.movie.recommendations.results.length > 0}
@@ -39,13 +50,6 @@
 {/if}
 
 <style>
-	.grid {
-		display: grid;
-		max-width: var(--column);
-		margin: 2em auto;
-		gap: 2em;
-	}
-
 	iframe {
 		aspect-ratio: 16 / 9;
 		width: 100%;

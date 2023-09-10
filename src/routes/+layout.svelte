@@ -8,6 +8,7 @@
 	import '../styles.css';
 
 	export let data;
+	import '../styles.css';
 </script>
 
 <svelte:head>
@@ -23,10 +24,10 @@
 	<meta name="twitter:image" content="https://frontend-masters-svelteflix.vercel.app/og.png" />
 </svelte:head>
 
-<nav>
-	<a class="logo" href="/"><img class="logo" alt="SvelteFlix" src={logo} /></a>
+<div class="flex justify-between p-2 px-4 bg-black sticky top-0 z-50 w-full">
+	<a class="w-full" href="/"><img class="w-24" alt="SvelteFlix" src={logo} /></a>
 
-	<div class="links">
+	<div class="flex flex-row gap-5 w-full justify-end">
 		<a href="/search">Search</a>
 
 		{#if data.user}
@@ -39,16 +40,16 @@
 			<a href="/login">Log in | Register</a>
 		{/if}
 	</div>
-</nav>
+</div>
 
 <main class:infinite={$page.data.infinite}>
 	<slot />
 </main>
 
 <footer>
-	<p>
+	<div>
 		Data provided by <a href="https://www.themoviedb.org/"><img alt="The Movie DB" src={tmdb} /></a>
-	</p>
+	</div>
 </footer>
 
 {#if $navigating}
@@ -60,16 +61,6 @@
 	footer {
 		padding: 1rem var(--side);
 		margin: 0 auto;
-	}
-
-	nav {
-		display: flex;
-		width: 100%;
-		height: 3rem;
-		align-items: center;
-		justify-content: space-between;
-		color: var(--accent);
-		max-width: var(--column);
 	}
 
 	footer {

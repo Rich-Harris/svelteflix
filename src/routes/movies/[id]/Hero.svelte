@@ -98,7 +98,7 @@
 		flex-direction: column;
 		bottom: 0;
 		width: 100%;
-		padding: var(--side);
+		padding: 4rem;
 		margin-top: -4rem;
 		gap: 1rem;
 		text-shadow: 0 0 2px black;
