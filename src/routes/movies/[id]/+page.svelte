@@ -23,8 +23,13 @@
 		</div>
 	{/if}
 
-	<div in:slide class="flex flex-col gap-2 w-full p-4 bg-[--accent] text-sm md:text-lg lg:text-xl">
+	<div in:slide class="flex flex-col gap-2 w-full p-4 bg-[--accent] text-sm md:text-lg">
 		<div class="max-w-md">
+			<div class="flex gap-2">
+				<div class="font-bold w-full uppercase">Runtime:</div>
+				<div class="w-full">{data.movie.runtime} minutes</div>
+			</div>
+
 			<div class="flex gap-2">
 				<div class="font-bold w-full uppercase">Released:</div>
 				<div class="w-full">{data.movie.release_date}</div>
@@ -33,11 +38,6 @@
 			<div class="flex gap-2">
 				<div class="font-bold w-full uppercase">Budget:</div>
 				<div class="w-full">${Math.round(data.movie.budget / 1e6)}M</div>
-			</div>
-
-			<div class="flex gap-2">
-				<div class="font-bold w-full uppercase">Runtime:</div>
-				<div class="w-full">{data.movie.runtime} minutes</div>
 			</div>
 
 			<div class="flex gap-2">
