@@ -27,7 +27,7 @@
 <div class="flex justify-between p-2 px-4 bg-black sticky top-0 z-50 w-full">
 	<a class="w-full" href="/"><img class="w-24" alt="SvelteFlix" src={logo} /></a>
 
-	<div class="flex flex-row gap-5 w-full justify-end text-xs md:text-md">
+	<div class="flex flex-row gap-5 w-full justify-end text-xs sm:text-base text-[--accent]">
 		<div class="flex justify-between gap-5">
 			<a href="/search">Search</a>
 
