@@ -63,7 +63,7 @@
 				</a>
 			</div>
 		{:else}
-			<p><a href="/login">Log in or register</a> to add this to your watchlist.</p>
+			<p><a href="/login" class="underline">Log in or register</a> to play or add to watchlist.</p>
 		{/if}
 	</div>
 </div>
