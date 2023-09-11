@@ -2,98 +2,87 @@
 	import Carousel from '$lib/components/Carousel.svelte';
 	import Hero from './Hero.svelte';
 
+	import { fade, slide } from 'svelte/transition';
+
 	export let data;
 </script>
 
 <Hero movie={data.movie} in_watchlist={data.in_watchlist} />
 
-<div class="column grid" class:has-trailer={!!data.trailer}>
+<div class="grid" class:has-trailer={!!data.trailer}>
 	{#if data.trailer}
-		<iframe
-			src="https://www.youtube.com/embed/{data.trailer.key}"
-			title="YouTube video player"
-			frameborder="0"
-			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-			allowfullscreen
-		/>
+		<div in:fade class="">
+			<iframe
+				class=""
+				src="https://www.youtube.com/embed/{data.trailer.key}"
+				title="YouTube video player"
+				frameborder="0"
+				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+				allowfullscreen
+			/>
+		</div>
 	{/if}
 
-	<dl class="data">
-		<dt>Released</dt>
-		<dd>{data.movie.release_date}</dd>
+	<div in:slide class="flex flex-col gap-2 w-full p-4 bg-[--accent] text-sm md:text-base">
+		<div class="max-w-md">
+			<div class="flex gap-2">
+				<div class="font-bold w-full uppercase">Runtime:</div>
+				<div class="w-full">{data.movie.runtime} minutes</div>
+			</div>
 
-		<dt>Runtime</dt>
-		<dd>{data.movie.runtime} minutes</dd>
+			<div class="flex gap-2">
+				<div class="font-bold w-full uppercase">Released:</div>
+				<div class="w-full">{data.movie.release_date}</div>
+			</div>
 
-		<dt>Budget</dt>
-		<dd>${Math.round(data.movie.budget / 1e6)}M</dd>
+			<div class="flex gap-2">
+				<div class="font-bold w-full uppercase">Budget:</div>
+				<div class="w-full">${Math.round(data.movie.budget / 1e6)}M</div>
+			</div>
 
-		<dt>Revenue</dt>
-		<dd>${Math.round(data.movie.revenue / 1e6)}M</dd>
+			<div class="flex gap-2">
+				<div class="font-bold w-full uppercase">Revenue:</div>
+				<div class="w-full">${Math.round(data.movie.revenue / 1e6)}M</div>
+			</div>
 
-		<dt>Genre</dt>
-		<dd class="genres">{data.movie.genres?.map((g) => g.name).join(', ')}</dd>
-	</dl>
+			<!-- <div class="flex gap-2">
+				<div class="font-bold w-full uppercase">IMDB:</div>
+				<a
+					class=" w-full"
+					target="_blank"
+					href={`https://www.imdb.com/title/${data.movie.imdb_id}/?ref_=fn_al_tt_1a`}
+				>
+					<div class="underline">Read More</div>
+				</a>
+			</div> -->
+			<button class="bg-black font-bold py-2 px-4 text-sm md:text-base my-2">
+				<a
+					class="w-full"
+					target="_blank"
+					href={`https://www.imdb.com/title/${data.movie.imdb_id}/videogallery/?ref_=tt_pv_vi_sm`}
+				>
+					IMDB Page
+				</a>
+			</button>
+		</div>
+	</div>
 </div>
 
 {#if data.movie.recommendations.results.length > 0}
-	<Carousel title="You might also like..." movies={data.movie.recommendations.results} />
+	<div class="p-4">
+		<Carousel title="You might also like..." movies={data.movie.recommendations.results} />
+	</div>
 {/if}
 
 <style>
-	.grid {
-		display: grid;
-		max-width: var(--column);
-		margin: 2em auto;
-		gap: 2em;
-	}
-
 	iframe {
 		aspect-ratio: 16 / 9;
 		width: 100%;
 	}
 
-	.data {
-		display: grid;
-		grid-template-columns: max-content 1fr;
-		gap: 1em;
-	}
-
-	dt,
-	dd {
-		line-height: 1;
-	}
-
-	dt {
-		text-transform: uppercase;
-		font-size: 0.8rem;
-		top: 0.2rem;
-		opacity: 0.8;
-	}
-
-	dd {
-		margin: 0;
-	}
-
-	.genres {
-		grid-column: 2/5;
-	}
-
-	@media (min-width: 45em) {
-		.data {
-			display: grid;
-			grid-template-columns: max-content 1fr max-content 1fr;
-			gap: 1em;
-		}
-	}
-
 	@media (min-width: 60em) {
 		.grid {
 			grid-template-columns: 1fr 1fr;
-		}
-
-		.data {
-			height: 0;
 		}
 	}
 </style>

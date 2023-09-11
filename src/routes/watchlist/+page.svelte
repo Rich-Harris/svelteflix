@@ -4,8 +4,8 @@
 	export let data;
 </script>
 
-<div class="column flex">
-	<h1>Watchlist</h1>
+<div class=" p-2 flex flex-col">
+	<div class="text-3xl p-2">Watchlist</div>
 
 	{#if data.movies.length > 0}
 		<ResultsPage movies={data.movies} next={null} />

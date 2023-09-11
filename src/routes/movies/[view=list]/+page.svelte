@@ -1,14 +1,15 @@
 <script>
 	import * as api from '$lib/api';
 	import ResultsPage from '$lib/components/ResultsPage.svelte';
+	import { fade } from 'svelte/transition';
 
 	export let data;
 
 	let appending = false;
 </script>
 
-<div class="column flex">
-	<h1>{data.title}</h1>
+<div in:fade class="p-2 flex flex-col h-screen">
+	<div class="text-3xl p-2">{data.title}</div>
 
 	<ResultsPage
 		movies={data.movies}

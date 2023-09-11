@@ -2,6 +2,7 @@
 	import { smoothload } from '$lib/actions.js';
 	import { media } from '$lib/api';
 	import Carousel from '$lib/components/Carousel.svelte';
+	import { fade, blur, slide, scale, draw } from 'svelte/transition';
 
 	export let data;
 
@@ -14,12 +15,12 @@
 	<title>SvelteFlix</title>
 </svelte:head>
 
-<div class="column">
-	<h1>Today's top movies</h1>
+<div in:fade class="">
+	<!-- <h1>Today's top movies</h1> -->
 
 	<a href="/movies/{data.featured.id}">
 		<img
-			class="backdrop"
+			class="backdrop md:h-[50vh] object-cover"
 			alt={data.featured.title}
 			src={media(backdrop.file_path, 1280)}
 			style="aspect-ratio: {backdrop.aspect_ratio}"
@@ -28,7 +29,7 @@
 
 		{#if logo}
 			<img
-				class="logo"
+				class="absolute w-[20%] md:w-[10%] left-10"
 				alt={data.featured.title}
 				src={media(logo.file_path, 500)}
 				style="aspect-ratio: {logo.aspect_ratio}"
@@ -38,9 +39,11 @@
 	</a>
 </div>
 
-<Carousel title="Trending" href="/movies/trending" movies={data.trending} />
-<Carousel title="Now playing" href="/movies/now_playing" movies={data.now_playing} />
-<Carousel title="Upcoming" href="/movies/upcoming" movies={data.upcoming} />
+<div class="px-4">
+	<Carousel title="Trending" href="/movies/trending" movies={data.trending} />
+	<Carousel title="Now playing" href="/movies/now_playing" movies={data.now_playing} />
+	<Carousel title="Upcoming" href="/movies/upcoming" movies={data.upcoming} />
+</div>
 
 <style>
 	a {
@@ -51,16 +54,8 @@
 
 	.backdrop {
 		width: 100%;
-	}
-
-	.logo {
-		position: absolute;
-		width: 30%;
-		height: 100%;
-		left: 1rem;
-		bottom: 0;
-		object-fit: contain;
-		object-position: 50% 75%;
-		filter: drop-shadow(0 0 3rem black) drop-shadow(0 0 0.5rem black);
+		border-radius: 5px;
+		-webkit-mask-image: linear-gradient(to bottom, black 0%, black 80%, transparent 100%);
+		mask-image: linear-gradient(to bottom, black 0%, black 80%, transparent 100%);
 	}
 </style>

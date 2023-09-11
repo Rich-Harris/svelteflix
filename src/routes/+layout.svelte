@@ -8,6 +8,7 @@
 	import '../styles.css';
 
 	export let data;
+	import '../styles.css';
 </script>
 
 <svelte:head>
@@ -23,61 +24,41 @@
 	<meta name="twitter:image" content="https://frontend-masters-svelteflix.vercel.app/og.png" />
 </svelte:head>
 
-<nav>
-	<a class="logo" href="/"><img class="logo" alt="SvelteFlix" src={logo} /></a>
+<div class="flex justify-between p-2 px-4 bg-black sticky top-0 z-50 w-full">
+	<a class="w-full" href="/"><img class="w-24" alt="SvelteFlix" src={logo} /></a>
 
-	<div class="links">
-		<a href="/search">Search</a>
+	<div class="flex flex-row gap-5 w-full justify-end text-xs sm:text-base text-[--accent]">
+		<div class="flex justify-between gap-5">
+			<a href="/search">Search</a>
 
-		{#if data.user}
-			<a href="/watchlist">Watchlist</a>
+			{#if data.user}
+				<a href="/watchlist">Watchlist</a>
 
-			<form method="POST" action="/logout" use:enhance>
-				<button>Log out</button>
-			</form>
-		{:else}
-			<a href="/login">Log in or register</a>
-		{/if}
+				<form method="POST" action="/logout" use:enhance>
+					<button>Log out</button>
+				</form>
+			{:else}
+				<a href="/login">Log in | Register</a>
+			{/if}
+		</div>
 	</div>
-</nav>
+</div>
 
 <main class:infinite={$page.data.infinite}>
 	<slot />
 </main>
 
-<footer>
-	<p>
-		Data provided by <a href="https://www.themoviedb.org/"><img alt="The Movie DB" src={tmdb} /></a>
-	</p>
-</footer>
+<!-- <footer>
+	<div>
+		<a href="https://github.com/engage-intellect">@engageintellect</a>
+	</div>
+</footer> -->
 
 {#if $navigating}
 	<NavigatingIndicator />
 {/if}
 
 <style>
-	nav,
-	footer {
-		padding: 1rem var(--side);
-		margin: 0 auto;
-	}
-
-	nav {
-		display: flex;
-		width: 100%;
-		height: 3rem;
-		align-items: center;
-		justify-content: space-between;
-		color: var(--accent);
-		max-width: var(--column);
-	}
-
-	footer {
-		display: flex;
-		height: 5rem;
-		align-items: center;
-	}
-
 	a {
 		text-decoration: none;
 	}
@@ -91,23 +72,9 @@
 		cursor: pointer;
 	}
 
-	.links {
-		display: flex;
-		align-items: center;
-	}
-
 	main.infinite {
 		height: 0;
 		flex: 1;
 		overflow: hidden;
-	}
-
-	.links {
-		display: flex;
-		gap: 1em;
-	}
-
-	.logo {
-		height: 100%;
 	}
 </style>

@@ -57,7 +57,7 @@
 
 <svelte:window on:resize={handle_resize} />
 
-<div class="viewport" bind:this={viewport} on:scroll={handle_scroll}>
+<div class="overflow-auto max-h-full" bind:this={viewport} on:scroll={handle_scroll}>
 	<div
 		bind:this={results}
 		class="results"
@@ -65,9 +65,14 @@
 		style:padding-bottom="{padding_bottom}px"
 	>
 		{#each movies.slice(a, b) as movie}
-			<a href="/movies/{movie.id}">
+			<a href="/movies/{movie.id}" class="overflow-hidden rounded-lg">
 				{#if movie.poster_path}
-					<img alt={movie.title} src={media(movie.poster_path, 500)} use:smoothload />
+					<img
+						alt={movie.title}
+						src={media(movie.poster_path, 500)}
+						class="md:hover:scale-[102%] md:hover:saturate-[125%] transition-all duration-500 rounded-lg"
+						use:smoothload
+					/>
 				{:else}
 					<span>{movie.title}</span>
 				{/if}
@@ -81,10 +86,8 @@
 </div>
 
 <style>
-	.viewport {
-		height: 0;
-		flex: 1;
-		overflow-y: auto;
+	:global(.viewport::-webkit-scrollbar) {
+		display: none;
 	}
 
 	.results {
@@ -92,11 +95,9 @@
 		display: grid;
 		grid-template-rows: 2em repeat(auto, 1fr);
 		grid-template-columns: repeat(var(--columns), 1fr);
-		margin: 0 -0.5rem;
-	}
-
-	a {
-		padding: 0.5rem;
+		/* margin: 0 -0.5rem; */
+		overflow-x: none;
+		gap: 0.5rem;
 	}
 
 	img {

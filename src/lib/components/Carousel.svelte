@@ -8,22 +8,30 @@
 	export let movies: MovieListResult[];
 </script>
 
-<h2 class="column">
-	{title}
-	{#if href}<a {href}>see all</a>{/if}
-</h2>
+<div class="flex flex-col mb-5">
+	<div class="text-2xl my-2">
+		{title}
+		{#if href}<a {href} class="text-[--accent]">see all</a>{/if}
+	</div>
 
-<div class="carousel">
-	{#each movies as movie}
-		<a href="/movies/{movie.id}">
-			<img src={media(movie.poster_path, 500)} alt={movie.title} use:smoothload />
-		</a>
-	{/each}
+	<div class="carousel">
+		{#each movies as movie}
+			<a href="/movies/{movie.id}" class="">
+				<div class="overflow-hidden rounded-lg">
+					<img
+						src={media(movie.poster_path, 500)}
+						alt={movie.title}
+						use:smoothload
+						class="md:hover:scale-[102%] md:hover:saturate-[125%] rounded-lg object-cover transition-all duration-500"
+					/>
+				</div>
+			</a>
+		{/each}
+	</div>
 </div>
 
 <style>
 	.carousel {
-		--padding: max(var(--side), calc(var(--side) + (100vw - var(--column)) / 2));
 		display: flex;
 		height: clamp(10rem, 25vw, 20rem);
 		overflow-x: auto;
@@ -33,22 +41,12 @@
 		scroll-snap-type: x mandatory;
 		scroll-padding-left: var(--padding);
 		padding: 0 var(--padding);
-		gap: 1rem;
+		gap: 0.5rem;
+		scrollbar-width: none;
 	}
 
 	.carousel::-webkit-scrollbar {
 		display: none;
-	}
-
-	h2 {
-		font-size: 2.4rem;
-		padding: 0 var(--side);
-		margin-top: 4rem;
-	}
-
-	h2 a {
-		color: var(--accent);
-		font-size: 1.6rem;
 	}
 
 	a {

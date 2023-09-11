@@ -6,6 +6,8 @@
 	import type { MovieDetails } from '$lib/types';
 	import { smoothload } from '$lib/actions';
 	import { invalidateAll } from '$app/navigation';
+	import { Icon, Play } from 'svelte-hero-icons';
+	import { slide } from 'svelte/transition';
 
 	export let movie: MovieDetails;
 	export let in_watchlist: boolean;
@@ -26,37 +28,55 @@
 		/>
 	</div>
 
-	<div class="info">
+	<div in:slide class="info">
 		<h1>{movie.title}</h1>
 		<Stars vote_average={movie.vote_average} vote_count={movie.vote_count} />
 		<p>{movie.overview}</p>
 
 		{#if $page.data.user}
-			<form
-				method="POST"
-				action="/watchlist?/{in_watchlist ? 'delete' : 'add'}"
-				use:enhance={() => {
-					in_watchlist = !in_watchlist;
-					submitting = true;
+			<div class="button-group">
+				<form
+					method="POST"
+					action="/watchlist?/{in_watchlist ? 'delete' : 'add'}"
+					use:enhance={() => {
+						in_watchlist = !in_watchlist;
+						submitting = true;
 
-					return async () => {
-						await invalidateAll();
-						submitting = false;
-					};
-				}}
-			>
-				<input type="hidden" name="movie_id" value={movie.id} />
-				<button disabled={submitting}>
-					{in_watchlist ? 'Remove this from your watchlist' : 'Add this to your watchlist'}
-				</button>
-			</form>
+						return async () => {
+							await invalidateAll();
+							submitting = false;
+						};
+					}}
+				>
+					<input type="hidden" name="movie_id" value={movie.id} />
+					<button disabled={submitting} class="text-xs md:text-base">
+						{in_watchlist ? 'Remove from watchlist' : 'Add to watchlist'}
+					</button>
+				</form>
+
+				<a
+					href={`https://ww4.fmovies.co/search/?q=${movie.title}`}
+					target="_blank"
+					class=" text-xs md:text-base"
+				>
+					<button>Play</button>
+				</a>
+			</div>
 		{:else}
-			<p><a href="/login">Log in or register</a> to add this to your watchlist.</p>
+			<p><a href="/login" class="underline">Log in or register</a> to play or add to watchlist.</p>
 		{/if}
 	</div>
 </div>
 
 <style>
+	.button-group {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-center;
+		gap: 1rem;
+	}
+
 	.featured {
 		position: relative;
 		display: grid;
@@ -72,7 +92,7 @@
 		content: '';
 		position: absolute;
 		width: 100%;
-		height: 8rem;
+		height: 5rem;
 		left: 0;
 		bottom: 0;
 		background: linear-gradient(to top, black, transparent);
@@ -83,9 +103,10 @@
 		flex-direction: column;
 		bottom: 0;
 		width: 100%;
-		padding: var(--side);
+		padding: 2rem;
 		margin-top: -4rem;
 		gap: 1rem;
+		text-shadow: 0 0 2px black;
 	}
 
 	.info h1,
@@ -100,8 +121,14 @@
 	button {
 		background: var(--accent);
 		border: none;
-		color: black;
+		color: white;
 		padding: 1rem;
+		font-weight: 600;
+	}
+
+	button:hover {
+		cursor: pointer;
+		filter: brightness(110%);
 	}
 
 	button:active {
@@ -130,7 +157,7 @@
 		}
 
 		.backdrop::after {
-			width: 15rem;
+			width: 20rem;
 			height: 100%;
 			left: 100px;
 			left: 0;
